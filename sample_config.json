@@ -8,5 +8,6 @@
     "print_step": 100,
     "batch_size": 1,
     "clip_model": "ViT-H-14",
-    "clip_pretrain": "laion2b_s32b_b79k"
+    "clip_pretrain": "laion2b_s32b_b79k",
+    "image_paths": ["C:\\AI\\_notmine\\molly.png","C:\\AI\\_notmine\\molly1.png","C:\\AI\\_notmine\\molly2.png"]
 }
