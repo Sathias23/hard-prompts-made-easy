@@ -1,0 +1,92 @@
+CLIP Tokenization Analysis
+--------------------------------------------------
+
+Original prompt (116 words):
+A surreal and grotesque humanoid figure with exaggerated features, including a large grinning mouth filled with discolored teeth and bright, bulging blue eyes. The figure's skin is clammy and glossy, with an irregular, mottled texture. Its oversized head is disproportionate to its childlike torso. The scene is set in a dimly lit, cluttered room with a single ceiling light casting harsh shadows. The walls are painted in muted tones, and the background objects are barely visible, creating a claustrophobic atmosphere. The lighting is stark and dramatic, with a yellowish hue, emphasizing the unsettling, horror-themed mood. The style is highly detailed realism, with surreal and grotesque elements, focusing on intricate textures and shadows for an eerie aesthetic.
+
+Number of tokens: 77
+
+Individual tokens processed by CLIP:
+ 1. <|startoftext|>
+ 2. a</w>
+ 3. surreal</w>
+ 4. and</w>
+ 5. grote
+ 6. sque</w>
+ 7. human
+ 8. oid</w>
+ 9. figure</w>
+10. with</w>
+11. exagger
+12. ated</w>
+13. features</w>
+14. ,</w>
+15. including</w>
+16. a</w>
+17. large</w>
+18. gr
+19. inning</w>
+20. mouth</w>
+21. filled</w>
+22. with</w>
+23. disco
+24. lo
+25. red</w>
+26. teeth</w>
+27. and</w>
+28. bright</w>
+29. ,</w>
+30. bul
+31. ging</w>
+32. blue</w>
+33. eyes</w>
+34. .</w>
+35. the</w>
+36. figure</w>
+37. 's</w>
+38. skin</w>
+39. is</w>
+40. clam
+41. my</w>
+42. and</w>
+43. glossy</w>
+44. ,</w>
+45. with</w>
+46. an</w>
+47. irregular</w>
+48. ,</w>
+49. mott
+50. led</w>
+51. texture</w>
+52. .</w>
+53. its</w>
+54. oversized</w>
+55. head</w>
+56. is</w>
+57. disproportion
+58. ate</w>
+59. to</w>
+60. its</w>
+61. child
+62. like</w>
+63. tor
+64. so</w>
+65. .</w>
+66. the</w>
+67. scene</w>
+68. is</w>
+69. set</w>
+70. in</w>
+71. a</w>
+72. dim
+73. ly</w>
+74. lit</w>
+75. ,</w>
+76. clut
+77. <|endoftext|>
+
+Processed text (after tokenization/detokenization):
+<|startoftext|>a surreal and grotesque humanoid figure with exaggerated features , including a large grinning mouth filled with discolored teeth and bright , bulging blue eyes . the figure 's skin is clammy and glossy , with an irregular , mottled texture . its oversized head is disproportionate to its childlike torso . the scene is set in a dimly lit , clut<|endoftext|>
+
+Words that were dropped due to context window limit:
+A, Its, The, aesthetic., are, atmosphere., background, barely, bright,, casting, ceiling, claustrophobic, cluttered, creating, detailed, dramatic,, eerie, elements,, emphasizing, eyes., features,, figure's, focusing, for, glossy,, harsh, highly, horror-themed, hue,, intricate, irregular,, light, lighting, lit,, mood., muted, objects, on, painted, realism,, room, shadows, shadows., single, stark, style, texture., textures, tones,, torso., unsettling,, visible,, walls, yellowish

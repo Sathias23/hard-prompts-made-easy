@@ -1,0 +1,11 @@
+Optimizing long prompt...
+Target prompt (116 words):
+A surreal and grotesque humanoid figure with exaggerated features, including a large grinning mouth filled with discolored teeth and bright, bulging blue eyes. The figure's skin is clammy and glossy, with an irregular, mottled texture. Its oversized head is disproportionate to its childlike torso. The scene is set in a dimly lit, cluttered room with a single ceiling light casting harsh shadows. The walls are painted in muted tones, and the background objects are barely visible, creating a claustrophobic atmosphere. The lighting is stark and dramatic, with a yellowish hue, emphasizing the unsettling, horror-themed mood. The style is highly detailed realism, with surreal and grotesque elements, focusing on intricate textures and shadows for an eerie aesthetic.
+
+
+Optimization Results:
+Original length: 116 words
+Optimized length: 21 words
+Optimized prompt: static body dude arm mask blue chunks glazed repeating slab monster skirt photomanimated groteforms tighter faces face creature filling freckles ornate  
+
+Key elements preserved: 

@@ -81,24 +81,24 @@ class BasicPromptOptimizer(PromptOptimizer):
         
         Args:
             target_images: Path(s) to target image(s)
-            target_prompts: Target prompt(s) - Not implemented yet
+            target_prompts: Target prompt(s) to optimize towards
             **kwargs: Additional optimizer-specific parameters that override config
             
         Returns:
             Optimized prompt string
             
         Raises:
-            NotImplementedError: If text-based optimization is attempted
-            ValueError: If no target images are provided
+            ValueError: If neither target_images nor target_prompts are provided
         """
-        if target_prompts is not None:
-            raise NotImplementedError("Text-based optimization not implemented yet")
-        
-        if target_images is None:
+        if target_images is None and target_prompts is None:
             raise ValueError("Must provide either target_images or target_prompts")
         
-        # Load images
-        images = self._load_images(target_images)
+        # Load images if provided
+        images = self._load_images(target_images) if target_images is not None else None
+        
+        # Process text prompts if provided
+        if target_prompts is not None and isinstance(target_prompts, str):
+            target_prompts = [target_prompts]
         
         # Set random seed for reproducibility
         set_random_seed(self.config.seed)
@@ -111,7 +111,7 @@ class BasicPromptOptimizer(PromptOptimizer):
             "lr": self.config.learning_rate,
             "weight_decay": self.config.weight_decay,
             "loss_weight": 1.0,
-            "batch_size": None,  # Use all images
+            "batch_size": None,  # Use all images/prompts
             "print_step": self.config.print_step,
             "print_new_best": self.config.print_new_best,
             "tokenizer": self.tokenizer,
@@ -125,13 +125,28 @@ class BasicPromptOptimizer(PromptOptimizer):
         
         # Run optimization using optim_utils
         logger.info("Starting prompt optimization...")
-        best_text = optimize_prompt(
-            model=self.model,
-            preprocess=self.preprocess,
-            args=args,
-            device=self.device,
-            target_images=images
-        )
-        logger.info(f"Optimization complete.")
-        
-        return best_text
+        try:
+            best_text = optimize_prompt(
+                model=self.model,
+                preprocess=self.preprocess,
+                args=args,
+                device=self.device,
+                target_images=images,
+                target_prompts=target_prompts
+            )
+            # Remove or replace problematic Unicode characters
+            best_text = best_text.encode('ascii', 'ignore').decode('ascii')
+            logger.info("Optimization complete.")
+            return best_text
+        except UnicodeEncodeError as e:
+            # Handle Unicode encoding errors by stripping problematic characters
+            if hasattr(e, 'object'):
+                best_text = e.object.encode('ascii', 'ignore').decode('ascii')
+                logger.info("Optimization complete with character encoding fix.")
+                return best_text
+            else:
+                logger.error("Failed to handle Unicode characters in prompt")
+                raise
+        except Exception as e:
+            logger.error("Error during optimization: %s", str(e).encode('ascii', 'ignore').decode('ascii'))
+            raise

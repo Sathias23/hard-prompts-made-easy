@@ -208,7 +208,7 @@ def optimize_prompt_loop(model, tokenizer, token_embedding, all_target_features,
             best_text = decoded_text
             if print_new_best:
                 print(f"new best cosine sim: {best_sim}")
-                print(f"new best prompt: {best_text}")
+                print(f"best prompt so far: {best_text}")
 
 
     if print_step is not None:

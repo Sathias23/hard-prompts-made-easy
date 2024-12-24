@@ -3,6 +3,13 @@ CLIP Models
 
 This module contains the list of available CLIP models and their pretrained weights.
 These models are provided by the open_clip library.
+
+Notable models used in Stable Diffusion versions:
+- SDXL: Uses two CLIP models
+  1. Primary: openai/clip-vit-large-patch14 (ViT-L-14)
+  2. Secondary: openai/clip-vit-big-patch14 (ViT-bigG-14)
+- SD3: Uses OpenCLIP model
+  - laion/CLIP-ViT-bigG-14-laion2B-39B-b160k
 """
 
 from typing import List, Tuple
@@ -38,13 +45,14 @@ AVAILABLE_MODELS: List[Tuple[str, str]] = [
     ('ViT-B-16', 'laion400m_e32'),
     ('ViT-B-16-plus-240', 'laion400m_e31'),
     ('ViT-B-16-plus-240', 'laion400m_e32'),
-    ('ViT-L-14', 'openai'),
+    ('ViT-L-14', 'openai'),  # Used in SDXL as primary text encoder
     ('ViT-L-14', 'laion400m_e31'),
     ('ViT-L-14', 'laion400m_e32'),
     ('ViT-L-14', 'laion2b_s32b_b82k'),
     ('ViT-L-14-336', 'openai'),
     ('ViT-H-14', 'laion2b_s32b_b79k'),
-    ('ViT-g-14', 'laion2b_s12b_b42k'),
+    ('ViT-g-14', 'laion2b_s12b_b42k'),  # Base architecture for SD3's text encoder
+    ('ViT-bigG-14', 'laion2b_39b_b160k'),  # Used in SDXL as secondary text encoder
     
     # Multilingual Models
     ('roberta-ViT-B-32', 'laion2b_s12b_b32k'),
